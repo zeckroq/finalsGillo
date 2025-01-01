@@ -1,0 +1,18 @@
+{% include 'app/navbarhome.html' %}
+{% load static %}
+{% block content %}
+<body class="DashboardBody">
+    <section class="SectionOfAbout">
+        <div class="container">
+            <h1>Account Settings</h1>
+            <form method="POST" class="accform" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="update-btn">Update</button>
+                <button type="submit"><a href="{% url 'logout' %}" class="logout-btn">Logout</a></button>
+                <button type="submit"><a href="{% url 'delete_account' %}" class="delete-btn">Delete</a></button>
+            </form>
+        </div>
+    </section>
+    </body>
+{% endblock content %}

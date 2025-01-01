@@ -1,0 +1,20 @@
+{% include 'app/navbarhome.html' %}
+{% block content %}
+<body class="DashboardBody">
+    <section class="SectionOfAbout">
+            <div class="DivOfAbout">
+                <div class="ContentOfAbout">
+                    <h2>Delete Your Account</h2>
+                        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete Account</button>
+                        </form>
+
+                        <a href="{% url 'acc' %}">Cancel</a>
+                </div>
+            </div>
+        </section>
+    </body>
+{% endblock content %}

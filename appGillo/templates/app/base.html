@@ -1,0 +1,47 @@
+{% include 'app/navbarbase.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+     <main class="main">
+        <img src="{% static 'images/gym.jpg' %}" alt="image" class="main__bg">
+     </main>
+
+        <body class="">
+                <div>
+                    <div class="banner">
+                        <div class="intro">
+                            <h1>HG Fitness</h1>
+                            <div class="middle">
+                            <a class="strtbtn" href = "{% url 'login' %}">Start</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="card" style=" color: white;background: gray;">
+                                <h2>Progression</h2>
+                                <p>All progress takes place outside the comfort zone.</p>
+                                
+                        </div>
+                        <div class="card" style="color:white; background: black;">
+                                <h2>Workout</h2>
+                                <p>Workout till you feel that pain and soreness in muscles. This one is good pain. No pain, no gain.</p>
+                                
+                        </div>
+                        <div class="card" style="color: white;background: gray">
+                                <h2>Nutrition</h2>
+                                <p>Exercise is king, nutrition is Queen, put them together, and you've got a kingdom.</p>
+                                
+                        </div>
+                </div>
+        </body>
+</head>
+</html>
+{% endblock content %}

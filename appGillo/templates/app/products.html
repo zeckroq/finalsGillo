@@ -1,0 +1,34 @@
+{% include 'app/navbarhome.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+
+        <body class="DashboardBody">
+        <section class="SectionOfAbout">
+                <div class="DivOfAbout">
+                    <div class="ContentOfAbout">
+                        <h1>HG <span> Workouts</span></h1>
+                        <p>
+                            Welcome to HG Fitness, your ultimate resource for reaching and maintaining 
+                            your health and fitness goals! We’re dedicated to providing you with expert workout plans, 
+                            nutrition advice, and motivational tools to help you stay on track every step of the way. 
+                            Whether you're just starting out or looking to push your limits, we offer something for everyone beginner tips, 
+                            advanced routines, and everything in between. Our goal is to make fitness accessible and enjoyable, offering 
+                            guidance and support that fits into your lifestyle. Join our community and let’s build a healthier, stronger you together!
+                        </p>
+                        <br>
+                        <h5>Molino 3 Bacoor City, Cavite</h5>
+                    </div>
+                </div>
+            </section>
+        </body>
+</head>
+</html>
+{% endblock content %}

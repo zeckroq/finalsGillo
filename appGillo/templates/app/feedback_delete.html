@@ -1,0 +1,18 @@
+{% extends 'app/home.html' %}
+
+{% block content %}
+<body class="DashboardBody">
+<section class="SectionOfAbout">
+        <div class="DivOfAbout">
+            <div class="ContentOfAbout">
+                <h1>Delete Workout</h1>
+                <form action="{% url 'feedback_delete' object.pk %}" method = "post">
+                    {% csrf_token %}
+                    <p>Are you sure you want to delete your Feedback" {{post.title}}"?</p>
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock content %}
