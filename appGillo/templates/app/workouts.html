@@ -1,18 +1,38 @@
-{% extends 'app/home.html' %}
-
+{% include 'app/navbarhome.html' %}
+{% load static %}
 {% block content %}
-<body class="DashboardBody">
-<section class="SectionOfAbout">
-        <div class="DivOfAbout">
-            <div class="ContentOfAbout">
-                <a href="{% url 'feedback_create' %}">+ New Workouts</a>
-                {% for post in posts %}
-                <div class="post-entry">
-                    <h2><a href="{% url 'feedback_detail' post.pk %}">{{post.title}}</a></h2>
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="w-container">
+            <!-- Form to add a new workout -->
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_name">Workout Name</label>
+                    {{ form.name }}
                 </div>
-                {% endfor %}
-            </div>
+                <div class="form-group">
+                    <label for="id_description">Description</label>
+                    {{ form.description }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <!-- Display the added workouts inside the containers -->
+            {% for workout in workouts %}
+                <div class="w-card">
+                    <div class="w-content">
+                        <h3>{{ workout.name }}</h3>
+                        <p><pre>{{ workout.description }}</pre></p>
+                        <a href="{% url 'edit_workout' workout.id %}" class="btn">Edit</a>
+                        <a href="{% url 'delete_workout' workout.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No workouts added yet.</p>
+            {% endfor %}
         </div>
-    </section>
-</body>
+    </body>
+</html>
 {% endblock content %}

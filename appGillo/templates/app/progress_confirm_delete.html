@@ -1,0 +1,11 @@
+{% include 'app/u_navbar.html' %}
+{% block content %}
+<h2>Confirm Delete</h2>
+<p>Are you sure you want to delete progress for {{ progress.day }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'progress_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

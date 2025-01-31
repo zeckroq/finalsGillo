@@ -1,0 +1,13 @@
+{% include 'app/u_navbar.html' %}
+{% load static %}
+{% block content %}
+<body class="mp">
+<h2>{% if form.instance.pk %}Edit Progress{% else %}Add Progress{% endif %}</h2>
+<form method="post" class="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'progress_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+</body>
+{% endblock %}

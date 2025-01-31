@@ -22,16 +22,31 @@
             <div class="nav__menu" id="nav-menu">
                <ul class="nav__list">
                   <li class="nav__item">
-                     <a href="{% url 'home' %}" class="nav__link">Home</a>
+                     <a href="{% url 'ahome' %}" class="nav__link">Home</a>
                   </li>
 
                   <li class="nav__item">
-                     <a href="{% url 'feedback' %}" class="nav__link">Workouts</a>
+                     <a href="{% url 'users_list' %}" class="nav__link">Users</a>
                   </li>
 
                   <li class="nav__item">
-                     <a href="{% url 'products' %}" class="nav__link">Products</a>
+                     <a href="{% url 'a_workout' %}" class="nav__link">Workouts</a>
                   </li>
+
+                  {% if user.is_authenticated %}
+
+                  <li class="nav__item">
+                     <a href="{% url 'workout_view' %}" class="nav__link">Edit Workouts</a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="{% url 'logout' %}" class="nav__link">Logout</a>
+                  </li>
+                  {% else %}
+                  <li>
+                     <a href="{% url 'login' %}">Login</a>
+                  </li>
+                  {% endif %}
 
                   <!--<li class="nav__item">
                      <a href="{% url 'logout' %}" class="nav__link">Logout</a>
@@ -46,8 +61,8 @@
             </div>
 
             <div class="nav__actions">
-               <!-- Search button -->
-               <i class="ri-search-line nav__search" id="search-btn"></i>
+               <!-- Search button 
+               <i class="ri-search-line nav__search" id="search-btn"></i> -->
 
                <!-- Login button--> 
                <a class="ri-user-line nav__login" id="accounts-btn" href = "{% url 'acc' %}"></a>
@@ -76,6 +91,6 @@
       <!--==================== MAIN ====================-->
       
       <!--=============== MAIN JS ===============-->
-      <script src="{% static 'js/base.js' %}"></script>
+
    </body>
 </html>

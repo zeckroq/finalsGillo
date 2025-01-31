@@ -1,18 +1,26 @@
-{% include 'app/navbarhome.html' %}
+{% include 'app/u_navbar.html' %}
 {% load static %}
 {% block content %}
 <body class="DashboardBody">
     <section class="SectionOfAbout">
-        <div class="container">
+        <div class="acc-container">
             <h1>Account Settings</h1>
-            <form method="POST" class="accform" action="" enctype="multipart/form-data">
+            <form method="POST" class="accform" action="" enctype="multipart/form-data" onsubmit="showUpdateMessage(event)">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="update-btn">Update</button>
-                <button type="submit"><a href="{% url 'logout' %}" class="logout-btn">Logout</a></button>
-                <button type="submit"><a href="{% url 'delete_account' %}" class="delete-btn">Delete</a></button>
+                <button type="submit" id="update-btn" class="update-btn">Update</button>
+                <button type="button"><a href="{% url 'logout' %}" class="logout-btn">Logout</a></button>
+                <button type="button"><a href="{% url 'delete_account' %}" class="delete-btn">Delete</a></button>
             </form>
         </div>
     </section>
-    </body>
+
+    <script>
+        function showUpdateMessage(event) {
+            event.preventDefault();  // Prevents form from submitting immediately
+            alert("Your changes have been saved!");
+            event.target.submit();  // Submits the form after the alert
+        }
+    </script>
+</body>
 {% endblock content %}

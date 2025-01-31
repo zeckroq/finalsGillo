@@ -1,0 +1,49 @@
+{% include 'app/u_navbar.html' %}
+{% load static %}
+{% block content %}
+<body class="mp">
+<h2>My Meal Plans</h2>
+<a href="{% url 'meal_plan_create' %}" class="btn btn-primary">Add Meal Plan</a>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Calories</th>
+            <th>Protein (g)</th>
+            <th>Carbs (g)</th>
+            <th>Fats (g)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for meal_plan in meal_plans %}
+        <tr>
+            <td>{{ meal_plan.name }}</td>
+            <td>{{ meal_plan.calories }}</td>
+            <td>{{ meal_plan.protein }}</td>
+            <td>{{ meal_plan.carbs }}</td>
+            <td>{{ meal_plan.fats }}</td>
+            <td>
+                <form action="{% url 'meal_plan_delete' meal_plan.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total</th>
+            <th>{{ total_calories }}</th>
+            <th>{{ total_protein }}</th>
+            <th>{{ total_carbs }}</th>
+            <th>{{ total_fats }}</th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+</body>
+{% endblock %}

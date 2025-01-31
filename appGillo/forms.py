@@ -16,3 +16,28 @@ class CustomerForm(ModelForm):
         model = Customer
         fields = '__all__'
         exclude = ['user']
+        
+
+class WorkoutForm(forms.ModelForm):
+    class Meta:
+        model = Workout
+        fields = ['name', 'description']
+
+
+class ProgressForm(forms.ModelForm):
+    class Meta:
+        model = Progress
+        fields = ['day', 'workout', 'current_weight', 'aim_weight', 'description']
+
+
+class MealPlanForm(forms.ModelForm):
+    class Meta:
+        model = MealPlan
+        fields = ['name', 'calories', 'protein', 'carbs', 'fats']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'calories': forms.NumberInput(attrs={'class': 'form-control'}),
+            'protein': forms.NumberInput(attrs={'class': 'form-control'}),
+            'carbs': forms.NumberInput(attrs={'class': 'form-control'}),
+            'fats': forms.NumberInput(attrs={'class': 'form-control'}),
+        }

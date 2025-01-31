@@ -1,0 +1,86 @@
+{% include 'app/u_navbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Add Progress</title>
+</head>
+<body class="pr">
+
+    <h2 class="prg">Your Workout Progress</h2>
+
+    <!-- Form to Input Progress -->
+    <form method="POST">
+        {% csrf_token %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Workouts</th>
+                    <th>Current Weight</th>
+                    <th>Aim Weight</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="date" name="day" required></td>
+                    <td>
+                        <select name="workout" required>
+                            {% for workout in workouts %}
+                                <option value="{{ workout.id }}">{{ workout.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><input type="number" name="current_weight" step="0.01" required></td>
+                    <td><input type="number" name="aim_weight" step="0.01" required></td>
+                    <td><textarea name="description" rows="4" cols="50"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn" type="submit">Save Progress</button>
+    </form>
+
+    <hr>
+
+    <!-- Table to Display Saved Progress (Read-Only) -->
+    <h2>Your Saved Progress</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Workout</th>
+                <th>Current Weight</th>
+                <th>Aim Weight</th>
+                <th>Description</th>
+                <th>Actions</th> <!-- New column for Edit/Delete -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for progress in progress_list %}
+                <tr>
+                    <td>{{ progress.day }}</td>
+                    <td>{{ progress.workout.name }}</td>
+                    <td>{{ progress.current_weight }}</td>
+                    <td>{{ progress.aim_weight }}</td>
+                    <td>{{ progress.description }}</td>
+                    <td>
+                        <a href="{% url 'progress_edit' progress.id %}" class="btn btn-warning">Edit</a>
+                        <form action="{% url 'progress_delete' progress.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+{% endblock %}

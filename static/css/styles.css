@@ -1,0 +1,94 @@
+/* General Styles */
+.mp {
+    background-color: black;
+}
+
+
+/* Headings */
+h2 {
+    margin-top: 117px;
+    text-align: center;
+    color: white;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    color: white;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: gray;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    background-color: gray;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+}
+
+.table th {
+    background-color: black;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons */
+.btn {
+    background-color: gray;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-primary {
+    background-color: gray;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-secondary {
+    background-color: gray;
+    width: 100%;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}

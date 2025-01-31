@@ -1,0 +1,25 @@
+{% include 'app/navbarhome.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="wor">
+        <h2>Workouts</h2>
+        </div>
+        <div class="w-container">
+            <!-- Display the added workouts inside the containers -->
+            {% for workout in workouts %}
+                <div class="w-card">
+                    <div class="w-content">
+                        <h3>{{ workout.name }}</h3>
+                        <p><pre>{{ workout.description }}</pre></p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No workouts available.</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+{% endblock content %}

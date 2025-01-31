@@ -1,0 +1,32 @@
+{% include 'app/u_navbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="wor">
+            <h2>My Workouts</h2>
+        </div>
+        <div class="w-container">
+            {% for myworkout in myworkouts %}
+                <div class="w-card" id="workout-{{ myworkout.id }}" class="workout">
+                    <div class="w-content">
+                        {% if myworkout.workout.image %}
+                            <img src="{{ myworkout.workout.image.url }}" alt="{{ myworkout.workout.name }}" style="max-width: 200px; border-radius: 10px;">
+                        {% endif %}
+                        <h3>{{ myworkout.workout.name }}</h3>
+                        <p><pre>{{ myworkout.workout.description }}</pre></p>
+                        <p>Added on: {{ myworkout.added_on }}</p>
+                        <form action="{% url 'remove_workout' myworkout.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Done</button>
+                        </form>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No saved workouts.</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+{% endblock content %}

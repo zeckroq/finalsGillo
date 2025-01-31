@@ -1,0 +1,16 @@
+{% include 'app/u_navbar.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<body class="mp">
+<h2>Create Meal Plan</h2>
+
+<form method="post" class="meal">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+<a href="{% url 'meal_plan_list' %}" class="btn btn-secondary">Back to Meal Plans</a>
+</form>
+</body>
+{% endblock %}
